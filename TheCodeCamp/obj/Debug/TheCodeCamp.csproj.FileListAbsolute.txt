@@ -45,7 +45,6 @@ D:\Users\heito\OneDrive\Projetos\.NET\pluralsight c#\api\starting\TheCodeCamp\bi
 D:\Users\heito\OneDrive\Projetos\.NET\pluralsight c#\api\starting\TheCodeCamp\bin\System.Web.WebPages.Razor.xml
 D:\Users\heito\OneDrive\Projetos\.NET\pluralsight c#\api\starting\TheCodeCamp\bin\System.Web.Optimization.xml
 D:\Users\heito\OneDrive\Projetos\.NET\pluralsight c#\api\starting\TheCodeCamp\bin\Antlr3.Runtime.pdb
-D:\Users\heito\OneDrive\Projetos\.NET\pluralsight c#\api\starting\TheCodeCamp\obj\Debug\TheCodeCamp.csprojAssemblyReference.cache
 D:\Users\heito\OneDrive\Projetos\.NET\pluralsight c#\api\starting\TheCodeCamp\obj\Debug\TheCodeCamp.Migrations.InitialCreate.resources
 D:\Users\heito\OneDrive\Projetos\.NET\pluralsight c#\api\starting\TheCodeCamp\obj\Debug\TheCodeCamp.Migrations.Initial.resources
 D:\Users\heito\OneDrive\Projetos\.NET\pluralsight c#\api\starting\TheCodeCamp\obj\Debug\TheCodeCamp.csproj.GenerateResource.cache
