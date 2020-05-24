@@ -102,3 +102,8 @@ D:\Users\heito\OneDrive\Projetos\.NET\pluralsight c#\api\starting\TheCodeCamp\bi
 D:\Users\heito\OneDrive\Projetos\.NET\pluralsight c#\api\starting\TheCodeCamp\bin\roslyn\vbc.rsp
 D:\Users\heito\OneDrive\Projetos\.NET\pluralsight c#\api\starting\TheCodeCamp\bin\roslyn\VBCSCompiler.exe
 D:\Users\heito\OneDrive\Projetos\.NET\pluralsight c#\api\starting\TheCodeCamp\bin\roslyn\VBCSCompiler.exe.config
+D:\Users\heito\OneDrive\Projetos\.NET\pluralsight c#\api\starting\TheCodeCamp\bin\AutoMapper.dll
+D:\Users\heito\OneDrive\Projetos\.NET\pluralsight c#\api\starting\TheCodeCamp\bin\System.ValueTuple.dll
+D:\Users\heito\OneDrive\Projetos\.NET\pluralsight c#\api\starting\TheCodeCamp\bin\AutoMapper.pdb
+D:\Users\heito\OneDrive\Projetos\.NET\pluralsight c#\api\starting\TheCodeCamp\bin\AutoMapper.xml
+D:\Users\heito\OneDrive\Projetos\.NET\pluralsight c#\api\starting\TheCodeCamp\bin\System.ValueTuple.xml
