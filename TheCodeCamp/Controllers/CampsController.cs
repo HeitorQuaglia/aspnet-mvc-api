@@ -61,7 +61,7 @@ namespace TheCodeCamp.Controllers
             {
                 if (await _repository.GetCampAsync(model.Moniker) != null)
                 {
-                    ModelState.AddModelError("Moniker","Moniker in use");
+                    ModelState.AddModelError("Moniker", "Moniker in use");
                 }
                 if (ModelState.IsValid)
                 {
@@ -71,7 +71,7 @@ namespace TheCodeCamp.Controllers
                     {
                         var newModel = _mapper.Map<CampModel>(model);
 
-                        return CreatedAtRoute("GetCamp", new { moniker = newModel.Moniker } , newModel);
+                        return CreatedAtRoute("GetCamp", new { moniker = newModel.Moniker }, newModel);
                     }
                 }
             }
@@ -102,6 +102,26 @@ namespace TheCodeCamp.Controllers
                 return InternalServerError(ex);
             }
 
+            return BadRequest();
+        }
+        //Delete: Camp
+        [Route("{Moniker}")]
+        public async Task<IHttpActionResult> Delete(string moniker)
+        {
+            try
+            {
+                var camp = await _repository.GetCampAsync(moniker);
+                if (camp == null) return NotFound();
+                _repository.DeleteCamp(camp);
+                if (await _repository.SaveChangesAsync())
+                {
+                    return Ok();
+                }
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
             return BadRequest();
         }
     }
