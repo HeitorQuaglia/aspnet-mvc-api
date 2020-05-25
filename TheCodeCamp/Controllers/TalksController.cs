@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Threading.Tasks;
 using System.Web.Http;
 using TheCodeCamp.Data;
+using TheCodeCamp.Models;
 
 namespace TheCodeCamp.Controllers
 {
@@ -20,6 +20,19 @@ namespace TheCodeCamp.Controllers
             _mapper = mapper;
         }
         // GET: Talks
-        
+        [Route()]
+        public async Task<IHttpActionResult> Get(string moniker, bool includeSpeakers = false)
+        {
+            try
+            {
+                var results = await _repository.GetTalksByMonikerAsync(moniker, includeSpeakers);
+
+                return Ok(_mapper.Map<IEnumerable<TalkModel>>(results));
+            }
+            catch (Exception)
+            {
+                return InternalServerError();
+            }
+        }
     }
 }
