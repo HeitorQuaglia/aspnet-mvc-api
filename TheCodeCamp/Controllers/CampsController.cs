@@ -13,7 +13,6 @@ namespace TheCodeCamp.Controllers
     {
         private readonly IMapper _mapper;
         private readonly ICampRepository _repository;
-
         public CampsController(ICampRepository repository, IMapper mapper)
         {
             _repository = repository;
@@ -29,7 +28,7 @@ namespace TheCodeCamp.Controllers
 
                 //Mapping 
                 var mappedResult = _mapper.Map<IEnumerable<CampModel>>(result);
-                
+
                 return Ok(mappedResult);
             }
             catch (Exception ex)
@@ -37,8 +36,8 @@ namespace TheCodeCamp.Controllers
                 return InternalServerError(ex);
             }
         }
-
-        [Route("{Moniker}")]
+        //Get: Camp
+        [Route("{Moniker}", Name = "GetCamp")]
         public async Task<IHttpActionResult> Get(string moniker, bool includeTalks = false)
         {
             try
@@ -54,6 +53,29 @@ namespace TheCodeCamp.Controllers
             {
                 return InternalServerError(ex);
             }
+        }
+        //
+        public async Task<IHttpActionResult> Post(CampModel model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var camp = _mapper.Map<Camp>(model);
+                    _repository.AddCamp(camp);
+                    if (await _repository.SaveChangesAsync())
+                    {
+                        var newModel = _mapper.Map<CampModel>(model);
+
+                        return CreatedAtRoute("GetCamp", new { moniker = newModel.Moniker } , newModel);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+            return BadRequest();
         }
     }
 }

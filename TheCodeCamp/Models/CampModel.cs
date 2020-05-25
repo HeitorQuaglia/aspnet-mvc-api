@@ -16,7 +16,7 @@ namespace TheCodeCamp.Models
         public ICollection<TalkModel> Talks { get; set; }
 
         //Include Location Information
-        public string Venue { get; set; }
+        public string LocationVenueName { get; set; }
         public string LocationAddress1 { get; set; }
         public string LocationAddress2 { get; set; }
         public string LocationAddress3 { get; set; }
