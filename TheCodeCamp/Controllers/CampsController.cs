@@ -54,7 +54,7 @@ namespace TheCodeCamp.Controllers
                 return InternalServerError(ex);
             }
         }
-        //
+        //Post: Camp
         public async Task<IHttpActionResult> Post(CampModel model)
         {
             try
@@ -80,6 +80,29 @@ namespace TheCodeCamp.Controllers
                 return InternalServerError(ex);
             }
             return BadRequest(ModelState);
+        }
+        //Put: Camp
+        [Route("{Moniker}")]
+        public async Task<IHttpActionResult> Put(string moniker, CampModel model)
+        {
+            try
+            {
+                var camp = await _repository.GetCampAsync(moniker);
+                if (camp == null) return NotFound();
+
+                _mapper.Map(model, camp);
+
+                if (await _repository.SaveChangesAsync())
+                {
+                    return Ok(_mapper.Map<Camp>(model));
+                }
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+
+            return BadRequest();
         }
     }
 }
