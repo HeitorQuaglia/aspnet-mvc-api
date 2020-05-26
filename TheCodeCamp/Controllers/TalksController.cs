@@ -34,9 +34,8 @@ namespace TheCodeCamp.Controllers
                 return InternalServerError();
             }
         }
-
         // GET: Talk
-        [Route("{id:int}")]
+        [Route("{id:int}", Name = "GetTalk")]
         public async Task<IHttpActionResult> Get(string moniker, int id, bool includeSpeakers = false)
         {
             try
@@ -50,6 +49,32 @@ namespace TheCodeCamp.Controllers
             {
                 return InternalServerError();
             }
+        }
+        //POST: Talk
+        [Route()]
+        public async Task<IHttpActionResult> Post(string moniker, TalkModel model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var camp = await _repository.GetCampAsync(moniker);
+                    var talk = _mapper.Map<Talk>(model);
+                    talk.Camp = camp;
+
+                    if(await _repository.SaveChangesAsync())
+                    {
+                        return CreatedAtRoute("GetTalk",
+                            new { moniker = moniker, id = talk.TalkId},
+                            _mapper.Map<TalkModel>(talk));
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                return InternalServerError();
+            }
+            return BadRequest();
         }
     }
 }

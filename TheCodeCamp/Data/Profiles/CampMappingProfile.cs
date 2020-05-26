@@ -12,6 +12,8 @@ namespace TheCodeCamp.Data.Profiles
         public CampMappingProfile()
         {
             CreateMap<Camp, CampModel>().ReverseMap();
+            CreateMap<Talk, TalkModel>().ReverseMap();
+            CreateMap<Speaker, SpeakerModel>().ReverseMap();
         }
     }
 }
