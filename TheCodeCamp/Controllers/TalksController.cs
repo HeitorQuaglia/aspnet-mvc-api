@@ -62,6 +62,13 @@ namespace TheCodeCamp.Controllers
                     var talk = _mapper.Map<Talk>(model);
                     talk.Camp = camp;
 
+                    //Map Speaker if necessary
+                    if(model.Speaker != null)
+                    {
+                        var speaker = await _repository.GetSpeakerAsync(model.Speaker.SpeakerId);
+                        if (speaker != null) talk.Speaker = speaker;
+                    }
+
                     if(await _repository.SaveChangesAsync())
                     {
                         return CreatedAtRoute("GetTalk",
