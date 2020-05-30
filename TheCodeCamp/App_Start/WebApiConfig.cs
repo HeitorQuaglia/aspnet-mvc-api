@@ -13,7 +13,17 @@ namespace TheCodeCamp
             // Web API configuration and services
             AutofacConfig.Register();
 
+            //JSON Formatter camelCase
             config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            
+            //API Versioning
+            config.AddApiVersioning(cfg => 
+            {
+                cfg.DefaultApiVersion = new Microsoft.Web.Http.ApiVersion(1,0);
+                cfg.AssumeDefaultVersionWhenUnspecified = true;
+                cfg.ReportApiVersions = true;
+            });
+            
             // Web API routes
             config.MapHttpAttributeRoutes();
 
